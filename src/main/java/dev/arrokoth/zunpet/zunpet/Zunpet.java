@@ -4,8 +4,10 @@ import dev.arrokoth.zunpet.zunpet.client.screen.HudInstrument;
 import dev.arrokoth.zunpet.zunpet.registry.zunpetItems;
 import dev.arrokoth.zunpet.zunpet.registry.zunpetSoundEvents;
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -26,6 +28,7 @@ public class Zunpet {
         zunpetItems.ITEMS.register(modBus);
         zunpetSoundEvents.SOUND_EVENTS.register(modBus);
         Mod.EventBusSubscriber.Bus.MOD.bus().get().addListener(this::clientSetup);
+        modBus.addListener(this::addItemsToTabs);
     }
 
 
@@ -46,7 +49,13 @@ public class Zunpet {
         }
     }
 
-
+    private void addItemsToTabs(BuildCreativeModeTabContentsEvent event)
+    {
+        if (event.getTabKey() == CreativeModeTabs.COMBAT)
+        {
+            event.accept(zunpetItems.ZUN_PET_ITEM);
+        }
+    }
 
 
 
