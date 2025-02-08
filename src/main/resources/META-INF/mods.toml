@@ -1,0 +1,12 @@
+modLoader="javafml"
+loaderVersion="[43,)"
+license="MIT"
+
+[[mods]]
+modId="zunpet"
+version="1.19.2-1.0.0"
+displayName="Zunpet Forge"
+authors="Arrokoth, Rinko1231"
+description='''
+Zunpet!
+'''
